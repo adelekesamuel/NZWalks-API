@@ -10,6 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+//DBContext dependency injection into the program class...
 builder.Services.AddDbContext<NZWalksDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"));
