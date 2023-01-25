@@ -25,7 +25,7 @@ namespace NZWalksAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllRegions()
+        public async Task<IActionResult >GetAllRegionsAsync()
         {
             //*********This is to hardcode data to display
 
@@ -56,7 +56,7 @@ namespace NZWalksAPI.Controllers
 
             //******If data is to be fetched from the database using DTO standard.
 
-            var regions = regionRepository.GetAll();
+            var regions = await regionRepository.GetAllAsync();
 
             //return DTO regions
 
@@ -80,6 +80,22 @@ namespace NZWalksAPI.Controllers
 
             return Ok(regionsDTO);
 
+        }
+
+        [HttpGet]
+        [Route("{id:guid}")]
+        public async Task<IActionResult> GetRegionAsync(Guid id)
+        {
+           var DomainRegion = await  regionRepository.GetAsync(id);
+
+            if (DomainRegion == null)
+            {
+                return NotFound("This region does not exist");
+            }
+
+           var regionDTO = mapper.Map<Models.DTO.Region>(DomainRegion);
+
+            return Ok(regionDTO);
         }
     }
 }

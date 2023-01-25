@@ -259,3 +259,5 @@
 /Users/samuel/Projects/NZWalksAPI/obj/Debug/net6.0/NZWalksAPI.pdb
 /Users/samuel/Projects/NZWalksAPI/obj/Debug/net6.0/NZWalksAPI.genruntimeconfig.cache
 /Users/samuel/Projects/NZWalksAPI/obj/Debug/net6.0/ref/NZWalksAPI.dll
+/Users/samuel/Projects/NZWalksAPI/bin/Debug/net6.0/AutoMapper.dll
+/Users/samuel/Projects/NZWalksAPI/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
