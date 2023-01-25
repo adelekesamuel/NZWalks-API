@@ -16,6 +16,15 @@ namespace NZWalksAPI.Repositories
 
         }
 
+        //interface implementation for iRegionRepository ***AddAsync
+        public async Task<Region> AddAsync(Region region)
+        {
+            region.Id = Guid.NewGuid();
+            await nZWalksDbContext.AddAsync(region);
+            await nZWalksDbContext.SaveChangesAsync();
+            return region;
+        }
+
         async Task<IEnumerable<Region>> iRegionRepository.GetAllAsync()
 		{
 			return await nZWalksDbContext.Regions.ToListAsync();

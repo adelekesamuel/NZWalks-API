@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NZWalksAPI.Models.Domain;
 using NZWalksAPI.Repositories;
-using NZWalksAPI.Models.DTO;
+//using NZWalksAPI.Models.DTO;
 using AutoMapper;
 
 namespace NZWalksAPI.Controllers
@@ -24,6 +24,7 @@ namespace NZWalksAPI.Controllers
             this.mapper = mapper;
         }
 
+        //get all region endpoint
         [HttpGet]
         public async Task<IActionResult >GetAllRegionsAsync()
         {
@@ -82,8 +83,10 @@ namespace NZWalksAPI.Controllers
 
         }
 
+        //Get region by uuid endpoint
         [HttpGet]
         [Route("{id:guid}")]
+        [ActionName("GetRegionAsync")]
         public async Task<IActionResult> GetRegionAsync(Guid id)
         {
            var DomainRegion = await  regionRepository.GetAsync(id);
@@ -96,6 +99,39 @@ namespace NZWalksAPI.Controllers
            var regionDTO = mapper.Map<Models.DTO.Region>(DomainRegion);
 
             return Ok(regionDTO);
+        }
+
+        //Add region endpoint
+        [HttpPost]
+        public async Task<IActionResult> AddRegionAsync(Models.DTO.AddRegionRequest addRegionRequest)
+        {
+            //Requst(DTO) to Domain Model
+            var region = new Models.Domain.Region()
+            {
+                Code = addRegionRequest.Code,
+                Area = addRegionRequest.Area,
+                Lat = addRegionRequest.Lat,
+                Long = addRegionRequest.Long,
+                Name = addRegionRequest.Name,
+                Population = addRegionRequest.Population
+            };
+
+            //Pass details to Repository
+            region = await regionRepository.AddAsync(region);
+
+            //Convert back to DTO
+            var regionDTO = new Models.DTO.Region
+            {
+                Id = region.Id,
+                Code = region.Code,
+                Area = region.Area,
+                Lat = region.Lat,
+                Long = region.Long,
+                Name = region.Name,
+                Population = region.Population
+            };
+
+            return CreatedAtAction(nameof(GetRegionAsync), new { id = regionDTO.Id}, regionDTO);
         }
     }
 }
