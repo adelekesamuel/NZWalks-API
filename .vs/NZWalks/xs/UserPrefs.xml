@@ -1,13 +1,17 @@
 ﻿<Properties StartupConfiguration="{6A7EEE06-5620-4BBE-9F99-42031F410803}|Default">
-  <MonoDevelop.Ide.ItemProperties.NZWalksAPI PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.ItemProperties.NZWalksAPI PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/RegionsController.cs">
     <Files>
-      <File FileName="Program.cs" Line="18" Column="81" />
-      <File FileName="Controllers/RegionsController.cs" Line="59" Column="18" />
-      <File FileName="Reopsitories/iRegionRepository.cs" Line="5" Column="19" />
-      <File FileName="Reopsitories/RegionRepository.cs" Line="18" Column="4" />
-      <File FileName="Models/DTO/Region.cs" Line="2" Column="40" />
-      <File FileName="Models/Domain/Region.cs" Line="25" Column="1" />
+      <File FileName="Program.cs" />
+      <File FileName="Controllers/RegionsController.cs" Line="137" Column="2" />
+      <File FileName="Models/DTO/Region.cs" />
+      <File FileName="Models/Domain/Region.cs" />
+      <File FileName="Profiles/RegionsProfile.cs" />
+      <File FileName="Repositories/iRegionRepository.cs" />
+      <File FileName="Repositories/RegionRepository.cs" />
+      <File FileName="Data/NZWalksDbContext.cs" />
+      <File FileName="Models/DTO/AddRegionRequest.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,22 +21,18 @@
               <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True">
-                <Node name="Domain" expanded="True" />
-                <Node name="DTO" expanded="True">
-                  <Node name="Region.cs" selected="True" />
-                </Node>
+                <Node name="DTO" expanded="True" />
               </Node>
-              <Node name="Repositories" expanded="True" />
+              <Node name="Profiles" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
 </Properties>
