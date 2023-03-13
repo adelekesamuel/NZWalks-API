@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NZWalksAPI.Models.Domain;
 using NZWalksAPI.Repositories;
-//using NZWalksAPI.Models.DTO;
+using NZWalksAPI.Models.DTO;
 using AutoMapper;
+using System.Runtime.InteropServices;
+using System.Xml.Linq;
 
 namespace NZWalksAPI.Controllers
 {
@@ -161,6 +163,47 @@ namespace NZWalksAPI.Controllers
 
             //return ok response
             return Ok(regionDTO);
-        }           
+        }
+
+        [HttpPut]
+        [Route("{id:guid}")]
+        public async Task<IActionResult> UpdateRegionAsync([FromRoute] Guid id, [FromBody] Models.DTO.UpdateRegionRequest updateRegionRequest)
+        {
+            //convert DTO to domain model
+            var region = new Models.Domain.Region()
+            {
+                Code = updateRegionRequest.Code,
+                Area = updateRegionRequest.Area,
+                Lat = updateRegionRequest.Lat,
+                Long = updateRegionRequest.Long,
+                Name = updateRegionRequest.Name,
+                Population = updateRegionRequest.Population
+            };
+
+            //update region using repository
+            await regionRepository.UpdateAsync(id, region);
+
+            //if null then notfound
+            if (region == null)
+            {
+                return NotFound(); 
+            }
+
+            //Convert domain back to DTO
+            var regionDTO = new Models.DTO.Region
+            {
+                Id = region.Id,
+                Code = region.Code,
+                Area = region.Area,
+                Lat = region.Lat,
+                Long = region.Long,
+                Name = region.Name,
+                Population = region.Population
+            };
+
+            //return Ok response
+            return Ok();
+
+        }
     }
 }
